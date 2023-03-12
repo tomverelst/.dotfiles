@@ -1,0 +1,16 @@
+[v1]
+"cargo-bloat 0.11.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-bloat"]
+"cargo-edit 0.11.5 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-add",
+    "cargo-rm",
+    "cargo-set-version",
+    "cargo-upgrade",
+]
+"cargo-expand 1.0.34 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand"]
+"cargo-generate 0.16.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
+"cargo-watch 8.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]
+"cross 0.2.4 (git+https://github.com/cross-rs/cross#f0190b0c0fd8fc354d9b0fad61c06bf0f29be277)" = [
+    "cross",
+    "cross-util",
+]
+"tauri-cli 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
