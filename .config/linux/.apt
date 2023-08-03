@@ -5,3 +5,11 @@ fortune-mod
 exa
 curl
 git
+build-essential
+openssl
+libssl-dev
+libsasl2-dev
+bat
+openssh-server
+ca-certificates
+gnupg
