@@ -22,6 +22,12 @@ if ! command -v docker &>/dev/null; then
   sh $INSTALL_DIR/install-docker.sh
 fi
 
+if ! command -v brew &>/dev/null; then
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  
+fi
+
 # Link `batcat` to `bat`
 if ! command -v bat &>/dev/null; then
   echo "Linking batcat to bat..."

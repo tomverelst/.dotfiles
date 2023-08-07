@@ -13,3 +13,4 @@ bat
 openssh-server
 ca-certificates
 gnupg
+alacritty
