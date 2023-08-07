@@ -13,6 +13,12 @@ if ! command -v rustup &>/dev/null; then
   echo "Installing Rust..."
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   source $HOME/.cargo/env
+
+  echo "Installing cargo-bin..."
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+  echo "Installing cargo-watch..."
+  cargo binstall --no-confirm cargo-watch
 else
   echo "Rust is already installed..."
 fi
