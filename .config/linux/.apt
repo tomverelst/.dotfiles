@@ -14,3 +14,4 @@ openssh-server
 ca-certificates
 gnupg
 alacritty
+net-tools
