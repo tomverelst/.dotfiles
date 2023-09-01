@@ -6,7 +6,7 @@ set -e
 
 # Install packages
 echo "Installing packages..."
-sh $INSTALL_DIR/install-packages.sh
+sh ~/.config/linux/install-packages.sh
 
 # Install Rust
 if ! command -v rustup &>/dev/null; then
