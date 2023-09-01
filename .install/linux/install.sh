@@ -1,12 +1,12 @@
 #!/bin/bash
 
-INSTALL_DIR=$HOME/.config/linux/
+INSTALL_DIR=$HOME/.install/linux/
 
 set -e
 
 # Install packages
 echo "Installing packages..."
-sh ~/.config/linux/install-packages.sh
+sh $INSTALL_DIR/install-packages.sh
 
 # Install Rust
 if ! command -v rustup &>/dev/null; then
@@ -31,7 +31,7 @@ fi
 if ! command -v brew &>/dev/null; then
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Link `batcat` to `bat`
