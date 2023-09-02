@@ -1,0 +1,28 @@
+[init]
+	templatedir= ~/.config/git/templates
+
+[alias]
+lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+graph = !"git lg1"
+	co = checkout
+	br = branch
+	st = status
+	p = push
+	ll = log --oneline
+	last = log -1 HEAD --stat
+	c = commit -m
+	A = add -A
+	uncommit = reset --soft HEAD^
+	boom = !git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches
+	unstage = restore --staged
+	clean = !git_clean_branches
+	poof = !fish git_clean_branches
+	yonk = !git rev-parse HEAD | tee /dev/tty | tr -d \"\\n\" | pbcopy
+[core]
+	autocrlf = input
+[user]
+	name = Tom Verelst
+	email = 664136+tomverelst@users.noreply.github.com
+[push]
+	autoSetupRemote = true
