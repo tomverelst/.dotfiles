@@ -3,3 +3,4 @@ reattach-to-user-namespace
 parallel
 icu4c
 git-filter-repo
+kind
