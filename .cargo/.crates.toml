@@ -8,9 +8,10 @@
 ]
 "cargo-expand 1.0.34 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand"]
 "cargo-generate 0.16.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
-"cargo-watch 8.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]
 "cross 0.2.4 (git+https://github.com/cross-rs/cross#f0190b0c0fd8fc354d9b0fad61c06bf0f29be277)" = [
     "cross",
     "cross-util",
 ]
 "tauri-cli 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
+"cargo-binstall 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-binstall"]
+"cargo-watch 8.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]

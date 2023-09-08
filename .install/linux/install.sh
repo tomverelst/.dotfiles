@@ -34,6 +34,10 @@ if ! command -v brew &>/dev/null; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if ! command -v sdk &>/dev/null; then
+  curl -s "https://get.sdkman.io" | bash
+fi
+
 # Link `batcat` to `bat`
 if ! command -v bat &>/dev/null; then
   echo "Linking batcat to bat..."

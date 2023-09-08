@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 if test -d (brew --prefix)"/share/fish/completions"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
 end
