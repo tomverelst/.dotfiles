@@ -18,3 +18,5 @@ net-tools
 neovim
 xsel
 parallel
+npm
+yq
