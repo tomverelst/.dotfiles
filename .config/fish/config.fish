@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # Configure Linuxbrew if it is installed
-if test -d /home/linuxbrew/.linuxbrew/bin/brew
+if test -e /home/linuxbrew/.linuxbrew/bin/brew
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
