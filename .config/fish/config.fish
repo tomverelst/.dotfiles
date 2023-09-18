@@ -16,7 +16,9 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/.gcloud/path.fish.inc' ]; . '$HOME/.gcloud/path.fish.inc'; end
+if [ -f "$HOME/.gcloud/path.fish.inc" ];
+  . "$HOME/.gcloud/path.fish.inc";
+end
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
