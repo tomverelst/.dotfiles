@@ -20,3 +20,6 @@ xsel
 parallel
 npm
 yq
+htop
+iotop
+figlet
