@@ -5,3 +5,5 @@ icu4c
 git-filter-repo
 kind
 figlet
+ssh-copy-id
+kustomize
