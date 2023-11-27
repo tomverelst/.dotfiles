@@ -20,6 +20,7 @@ graph = !"git lg1"
 	poof = !fish git_clean_branches
 	yonk = !git rev-parse HEAD | tee /dev/tty | tr -d \"\\n\" | pbcopy
 	cb = !sh /Users/tom/.config/git/scripts/clone-for-worktrees.sh
+	wt = worktree
 [core]
 	autocrlf = input
 [user]

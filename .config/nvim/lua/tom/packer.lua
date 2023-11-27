@@ -41,6 +41,8 @@ return require('packer').startup(function(use)
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
+  use("christoomey/vim-tmux-navigator");
+
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -71,5 +73,18 @@ return require('packer').startup(function(use)
   use("laytan/cloak.nvim")
 
   use { "junegunn/fzf", run = ":call fzf#install()" }
+  use { "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons" ,
+    wants = "nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup()
 
+      require("nvim-tree").setup {
+        hijack_cursor = true,
+        view = {
+          width = 40
+        }
+      }
+    end
+  }
 end)
