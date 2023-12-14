@@ -3,7 +3,7 @@
 Clone repository as bare repository
 
 ```
-$ git clone --bare https://github.com/tomverelst/dotfiles.git $HOME/.dotfiles
+$ git clone --bare https://github.com/tomverelst/.dotfiles.git $HOME/.dotfiles
 ```
 
 Alias dotfiles
@@ -16,6 +16,18 @@ Checkout dotfiles
 
 ```
 $ dotfiles checkout
+```
+
+Install on OSX
+
+```
+./.install/osx/install.sh
+```
+
+Install on Linux
+
+```
+./.install/linux/install.sh
 ```
 
 Done!
