@@ -24,4 +24,12 @@ else
   cd ~/.tmux/plugins/tpm && git pull
 fi
 
+source ~/.install/osx/krew.sh
 
+if [ ! -f $HOME/.krew/bin/kubectl-krew ]; then
+  echo "🐳 Installing krew..."
+  install-krew
+fi
+
+echo "🐳 Updating krew..."
+install-krew-plugins
