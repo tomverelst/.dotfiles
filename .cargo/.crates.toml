@@ -1,7 +1,9 @@
 [v1]
+"agg 1.4.3 (git+https://github.com/asciinema/agg#ec02812eb281a5448f47bb45bf03d30819c0202f)" = ["agg"]
 "buck2 0.1.0 (git+https://github.com/facebook/buck2.git#e427ac31dcbc5e1ede1ec9fdee20ae39eba37bed)" = ["buck2"]
 "cargo-binstall 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-binstall"]
 "cargo-bloat 0.11.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-bloat"]
+"cargo-cache 0.8.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-cache"]
 "cargo-edit 0.12.2 (registry+https://github.com/rust-lang/crates.io-index)" = [
     "cargo-add",
     "cargo-rm",
