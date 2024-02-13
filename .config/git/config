@@ -21,7 +21,7 @@ graph = !"git lg1"
 	yonk = !git rev-parse HEAD | tee /dev/tty | tr -d \"\\n\" | pbcopy
 	cb = !sh /Users/tom/.config/git/scripts/clone-for-worktrees.sh
 	wt = worktree
-	whodidit = git blame -w -C -C -C -L
+	whodidit = blame -w -C -C -C -L
 [core]
 	autocrlf = input
 [user]
