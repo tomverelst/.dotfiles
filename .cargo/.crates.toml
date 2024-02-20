@@ -10,6 +10,7 @@
     "cargo-set-version",
     "cargo-upgrade",
 ]
+"cargo-example 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-example"]
 "cargo-expand 1.0.34 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand"]
 "cargo-generate 0.18.5 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
 "cargo-leptos 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-leptos"]

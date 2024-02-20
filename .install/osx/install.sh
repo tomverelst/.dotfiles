@@ -25,6 +25,7 @@ else
 fi
 
 source ~/.install/osx/krew.sh
+source ~/.install/osx/nix.sh
 
 if [ ! -f $HOME/.krew/bin/kubectl-krew ]; then
   echo "🐳 Installing krew..."
@@ -33,3 +34,7 @@ fi
 
 echo "🐳 Updating krew..."
 install-krew-plugins
+
+install-nix
+
+echo "Done!"
