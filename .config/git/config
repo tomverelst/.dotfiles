@@ -40,3 +40,5 @@ graph = !"git lg1"
 	ui = auto
 [branch]
 	sort = -committerdate
+[rebase]
+	autostash = true
