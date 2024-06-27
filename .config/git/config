@@ -1,8 +1,18 @@
 [init]
 	templatedir= ~/.config/git/templates
+	defaultBranch = main
 
 [diff]
-  external = difft
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
 
 [alias]
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
@@ -27,6 +37,7 @@ graph = !"git lg1"
 	whodidit = blame -w -C -C -C -L
 	search = log -p -S
 	brew-dump = !brew bundle dump --force --file=~/.install/osx/Brewfile && dotfiles add ~/.install/osx/Brewfile && ~/.install/osx/Brewfile.lock.json && dotfiles commit -m brewdump && dotfiles push
+	u = !sh ~/.config/git/scripts/update-release-branch.sh
 [core]
 	autocrlf = input
 [user]

@@ -1,10 +1,11 @@
 local lsp = require("lsp-zero")
+local lspconfig = require('lspconfig')
 
 lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
-  'rust_analyzer',
+  'rust_analyzer'
 })
 
 -- Fix Undefined global 'vim'
@@ -17,7 +18,6 @@ lsp.configure('lua-language-server', {
         }
     }
 })
-
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -60,8 +60,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+lspconfig.nixd.setup({})
 lsp.setup()
-
 vim.diagnostic.config({
     virtual_text = true
 })
