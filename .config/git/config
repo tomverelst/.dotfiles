@@ -54,3 +54,5 @@ graph = !"git lg1"
 	sort = -committerdate
 [rebase]
 	autostash = true
+[help]
+	autocorrect = prompt
