@@ -221,6 +221,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
+# Disable Apple Intelligence
+defaults write com.apple.SetupAssistant DidSeeIntelligence -bool true
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
