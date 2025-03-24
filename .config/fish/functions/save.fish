@@ -3,8 +3,9 @@ function save
     if string length -q (git -C $path status --porcelain)
       git -C $path add -A > /dev/null
       git -C $path commit -m "chore: save work" > /dev/null
-      git -C $path push --signed=true > /dev/null
-      echo "✅ Work saved!":
+      if git -C $path push > /dev/null
+        echo "✅ Work saved!"
+      end
     else
       echo "✅ No work to save."
     end
