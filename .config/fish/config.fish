@@ -20,14 +20,6 @@ if [ -f "$HOME/.gcloud/path.fish.inc" ];
   . "$HOME/.gcloud/path.fish.inc";
 end
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
 set -gx PATH $PATH $HOME/.krew/bin
+set -gx PATH $PATH $HOME/.spicetify
 
-# pnpm
-set -gx PNPM_HOME "/Users/tom/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
