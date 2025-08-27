@@ -15,11 +15,4 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/.gcloud/path.fish.inc" ];
-  . "$HOME/.gcloud/path.fish.inc";
-end
-
-set -gx PATH $PATH $HOME/.krew/bin
-set -gx PATH $PATH $HOME/.spicetify
 
