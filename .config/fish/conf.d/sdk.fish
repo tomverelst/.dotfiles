@@ -86,13 +86,6 @@ function __fish_sdkman_run_in_bash
     return $sdkStatus
 end
 
-# If this is a subshell of a(n initialized) fish owned by the same user,
-# no initialization necessary.
-# Otherwise:
-if not set -q SDKMAN_CANDIDATES_DIR; or test (ls -ld "$SDKMAN_CANDIDATES_DIR" | awk '{print $3}') != (whoami)
-    __fish_sdkman_run_in_bash "source $__fish_sdkman_init"
-end
-
 # Set up auto_env
 if grep -q "^sdkman_auto_env=true" "$SDKMAN_DIR/etc/config"
     function __fish_sdkman_autoenv --on-variable PWD

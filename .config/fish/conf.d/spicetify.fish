@@ -1,1 +1,1 @@
-set -gx PATH $PATH $HOME/.spicetify
+fish_add_path $HOME/.spicetify
