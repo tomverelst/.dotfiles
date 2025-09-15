@@ -6,6 +6,7 @@ email = "664136+tomverelst@users.noreply.github.com"
 
 [ui]
 editor = "nvim"
+color = "always"
 
 [git]
 push-new-bookmarks = true
