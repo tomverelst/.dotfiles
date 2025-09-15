@@ -13,11 +13,21 @@
 "cargo-example 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-example"]
 "cargo-expand 1.0.34 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-expand"]
 "cargo-generate 0.18.5 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
+"cargo-insta 1.43.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-insta"]
 "cargo-leptos 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-leptos"]
 "cargo-watch 8.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]
+"cargo-workspaces 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-workspaces",
+    "cargo-ws",
+]
 "cross 0.2.4 (git+https://github.com/cross-rs/cross#f0190b0c0fd8fc354d9b0fad61c06bf0f29be277)" = [
     "cross",
     "cross-util",
 ]
+"jj-cli 0.32.0 (git+https://github.com/jj-vcs/jj.git#1fa53c6a4f1c776b3e0c79920e9253249197276c)" = ["jj"]
+"sqlx-cli 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "cargo-sqlx",
+    "sqlx",
+]
 "tailspin 1.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["spin"]
-"tauri-cli 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
+"tauri-cli 2.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
