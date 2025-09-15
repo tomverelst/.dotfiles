@@ -39,6 +39,7 @@ graph = !"git lg1"
 	brew-dump = !brew bundle dump --force --file=~/.install/osx/Brewfile && dotfiles add ~/.install/osx/Brewfile && ~/.install/osx/Brewfile.lock.json && dotfiles commit -m brewdump && dotfiles push
 	u = !sh ~/.config/git/scripts/update-release-branch.sh
 	restack = rebase --fork-point --update-refs
+	tmux = !~/.config/git/scripts/tmux.sh
 [core]
 	autocrlf = input
 [user]
@@ -56,3 +57,5 @@ graph = !"git lg1"
 	autostash = true
 [help]
 	autocorrect = prompt
+[pull]
+	rebase = true
