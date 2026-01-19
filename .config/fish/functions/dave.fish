@@ -4,6 +4,7 @@ function __dave_setup
     set -g DAVE_CONTEXT_PREFIX "dave-"
     set -g DAVE_PROJECT_ID "prj-dave-prod-2f94"
     set -g DAVE_NAME_LABEL "dave-name"
+    set -g DAVE_TEMPLATES_DIR "$HOME/.config/dave/templates"
 
     function __dave_gcp_id
         set -l name $argv[1]
@@ -73,33 +74,22 @@ function __dave_setup
 
         echo "Creating development environment $name"
 
-         # Initialize an empty JSON object
-         set -l data '{}'
+        set -l data (__dave_render_template "$DAVE_TEMPLATES_DIR/dev.json" \
+            "name=$name" \
+            "pipeline_number=$pipelineNumber" \
+            "username=$username" \
+            "password=$password")
 
-         # Add the "name" field
-         set -l data (insert $data '.name = $name' --arg name "$name")
-
-         # Add the "source_artifacts" object
-         set -l data (insert $data '.source_artifacts = $source_artifacts' --argjson source_artifacts '{"env": "development", "pipeline_number":"'$pipelineNumber'"}')
-
-         # Add the "username" field under "kannika_helm_values.api.config.security"
-         set -l data (insert $data '.kannika_helm_values.api.config.security.username = $username' --arg username "$username")
-
-         # Add the "password" field under "kannika_helm_values.api.config.security"
-         set -l data (insert $data '.kannika_helm_values.api.config.security.password = $password' --arg password "$password")
-
-         # Output the final JSON
-         echo $data
-
-#         gcloud workflows run projects/$DAVE_PROJECT_ID/locations/$DAVE_GCP_REGION/workflows/apply \
-#         --data='{"name":"'$name'","source_artifacts":{"env": "development", "pipeline_number":"'$pipelineNumber'"},"username":"'$username'","password":"'$password'"}'
+        gcloud workflows run projects/$DAVE_PROJECT_ID/locations/$DAVE_GCP_REGION/workflows/apply \
+            --data=$data
     end
 
     # Function to update JSON using jq
     function insert
         set -l json_data $argv[1]  # Get the current JSON
         set -l jq_filter $argv[2]  # Get the jq filter
-        shift; shift  # Shift arguments to get remaining ones for jq
+        set -e argv[1]
+        set -e argv[1]  # Remove first two args to get remaining ones for jq
         set -l args $argv
 
         # Use jq to update the JSON and return the new data
@@ -113,8 +103,15 @@ function __dave_setup
         set -l password (__prompt "password")
 
         echo "Creating prerelease environment $name"
+
+        set -l data (__dave_render_template "$DAVE_TEMPLATES_DIR/prerelease.json" \
+            "name=$name" \
+            "tag=$tag" \
+            "username=$username" \
+            "password=$password")
+
         gcloud workflows run projects/$DAVE_PROJECT_ID/locations/$DAVE_GCP_REGION/workflows/apply \
-        --data='{"name":"'$name'","appVersion":"'$appVersion'","username":"'$username'","password":"'$password'"}'
+            --data=$data
     end
 
     function __dave_env_delete
@@ -159,8 +156,17 @@ function __dave_setup
         echo $value
     end
 
-
-
+    function __dave_render_template
+        set -l template_file $argv[1]
+        set -e argv[1]
+        set -l result (cat $template_file)
+        for pair in $argv
+            set -l key (string split '=' $pair)[1]
+            set -l value (string split '=' $pair)[2]
+            set result (echo $result | string replace -a "{{$key}}" "$value")
+        end
+        echo $result | jq -c .
+    end
 
     function dave
         if test (count $argv) -eq 0
@@ -195,6 +201,7 @@ function __dave_setup
                 return 1
         end
     end
+
 end
 
 __dave_setup

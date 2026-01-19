@@ -1,0 +1,17 @@
+{
+  "name": "{{name}}",
+  "source_artifacts": {
+    "env": "development",
+    "pipeline_number": "{{pipeline_number}}"
+  },
+  "kannika_helm_values": {
+    "api": {
+      "config": {
+        "security": {
+          "username": "{{username}}",
+          "password": "{{password}}"
+        }
+      }
+    }
+  }
+}

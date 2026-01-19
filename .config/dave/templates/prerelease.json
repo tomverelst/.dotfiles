@@ -1,0 +1,31 @@
+{
+  "confluent_cloud_clusters": {
+    "one": {
+      "cluster_type": "standard",
+      "samples_topics_to_create": [
+        "flights"
+      ],
+      "service_account": {
+        "allow_write": true
+      }
+    }
+  },
+  "kannika_helm_values": {
+    "api": {
+      "config": {
+        "security": {
+          "password": "{{password}}",
+          "username": "{{username}}"
+        }
+      }
+    }
+  },
+  "name": "{{name}}",
+  "samples_to_load_rp": [
+    "flights"
+  ],
+  "source_artifacts": {
+    "env": "prerelease",
+    "tag": "{{tag}}"
+  }
+}
