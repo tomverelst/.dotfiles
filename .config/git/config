@@ -40,6 +40,7 @@ graph = !"git lg1"
 	u = !sh ~/.config/git/scripts/update-release-branch.sh
 	restack = rebase --fork-point --update-refs
 	tmux = !~/.config/git/scripts/tmux.sh
+    ct = commit -F commit.txt
 [core]
 	autocrlf = input
 [user]
