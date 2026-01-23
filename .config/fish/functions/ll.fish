@@ -1,3 +1,3 @@
-function ll --wraps='lsd -al' --wraps='eza -l -g --icons' --description 'alias ll=eza -l -g --icons'
-  eza -l -g --icons $argv; 
+function ll --wraps='eza -a -1 --icons' --description 'ls list'
+  eza -a -1 --icons $argv;
 end
