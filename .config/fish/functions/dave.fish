@@ -110,7 +110,7 @@ function __dave_setup
             "username=$username" \
             "password=$password")
 
-        gcloud workflows run projects/$DAVE_PROJECT_ID/locations/$DAVE_GCP_REGION/workflows/apply \
+        gcloud workflows run --location $DAVE_GCP_REGION projects/$DAVE_PROJECT_ID/locations/$DAVE_GCP_REGION/workflows/apply \
             --data=$data
     end
 
