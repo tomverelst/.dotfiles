@@ -1,0 +1,14 @@
+[font]
+size = 16.0
+
+[font.normal]
+family = "NotoMono Nerd Font"
+
+[terminal.shell]
+program = "/usr/local/bin/fish"
+args = ["-l", "-c", "tmux attach || tmux"]
+
+[[keyboard.bindings]]
+key = "Paste"
+mods = "Shift|Control"
+action = "Paste"
