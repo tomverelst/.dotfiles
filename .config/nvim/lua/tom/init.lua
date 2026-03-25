@@ -1,7 +1,7 @@
 require("tom.packer")
 require("tom.set")
 require("tom.remap")
-
+require("tom.watch")
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('tom', {})
 

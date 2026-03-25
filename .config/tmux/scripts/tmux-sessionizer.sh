@@ -11,18 +11,27 @@ dirs=(
   "$HOME/git/tomverelst:2"
 )
 
-results=""
-for entry in "${dirs[@]}"; do
-  dir="${entry%%:*}"
-  depth="${entry##*:}"
-  if [[ -d "$dir" ]]; then
-    # Find regular repos (.git dir) and worktree checkouts (.git file)
-    found=$(find "$dir" -mindepth 1 -maxdepth "$depth" -name .git -exec dirname {} \; 2>/dev/null)
-    results+="$found"$'\n'
-  fi
-done
+# Run all fd searches in parallel, time it, pipe into fzf
+start_ns=$(date +%s%N)
 
-selected=$(echo "$results" | grep -v '^$' | sort -u | fzf --reverse --prompt="project> ")
+results=$(
+  {
+    for entry in "${dirs[@]}"; do
+      dir="${entry%%:*}"
+      depth="${entry##*:}"
+      if [[ -d "$dir" ]]; then
+        fd '^\.git$' "$dir" -HI --min-depth 1 --max-depth "$depth" -x dirname {} 2>/dev/null &
+      fi
+    done
+    wait
+  } | sort -u
+)
+
+end_ns=$(date +%s%N)
+elapsed_ms=$(( (end_ns - start_ns) / 1000000 ))
+count=$(echo "$results" | grep -c .)
+
+selected=$(echo "$results" | fzf --reverse --prompt="project> " --header="found $count projects in ${elapsed_ms}ms")
 
 if [[ -z $selected ]]; then
     exit 0
