@@ -9,6 +9,7 @@ dirs=(
   "$HOME/git/cruxy:2"
   "$HOME/git/other:2"
   "$HOME/git/tomverelst:2"
+  "$HOME/git/kannika:2"
 )
 
 # Run all fd searches in parallel, time it, pipe into fzf
