@@ -17,7 +17,12 @@ if [[ -z "$files" ]]; then
 fi
 
 count=$(echo "$files" | wc -l | tr -d ' ')
-selected=$(echo "$files" | fzf-tmux -d20 --reverse --prompt="review> " --header="$count files")
+
+# Show relative paths in fzf, map back to absolute
+selected=$(echo "$files" \
+  | while read -r f; do echo "${f#$pane_dir/}	$f"; done \
+  | fzf-tmux -d20 --reverse --prompt="review> " --header="$count files" --with-nth=1 --delimiter=$'\t' \
+  | cut -f2)
 
 if [[ -z "$selected" ]]; then
     exit 0
