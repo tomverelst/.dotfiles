@@ -4,7 +4,7 @@
 
 dirs=(
   "$HOME/git/cymo:2"
-  "$HOME/git/cymo/k:3"
+  "$HOME/git/cymo/kannika:3"
   "$HOME/git/cymo/kp:3"
   "$HOME/git/cruxy:2"
   "$HOME/git/other:2"
