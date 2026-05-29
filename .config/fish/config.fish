@@ -16,3 +16,10 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
 end
 
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/tom/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
