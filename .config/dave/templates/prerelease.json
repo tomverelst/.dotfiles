@@ -14,8 +14,11 @@
     "api": {
       "config": {
         "security": {
-          "password": "{{password}}",
-          "username": "{{username}}"
+          "basicAuth": {
+            "enabled": true,
+            "username": "{{username}}",
+            "password": "{{password}}"
+          }
         }
       }
     }
