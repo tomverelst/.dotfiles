@@ -9,9 +9,10 @@ if [[ "$pane_count" -gt 1 ]]; then
     tmux kill-pane
 elif [[ "$window_count" -gt 1 ]]; then
     tmux kill-window
-elif [[ "$session" != "0" ]]; then
-    tmux switch-client -t 0
-    tmux kill-session -t "$session"
 else
-    tmux kill-pane
+    other=$(tmux list-sessions -F '#S' | grep -v "^${session}$" | head -1)
+    if [[ -n "$other" ]]; then
+        tmux switch-client -t "$other"
+        tmux kill-session -t "$session"
+    fi
 fi
