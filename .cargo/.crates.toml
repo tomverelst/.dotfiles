@@ -1,10 +1,13 @@
 [v1]
 "agg 1.4.3 (git+https://github.com/asciinema/agg#ec02812eb281a5448f47bb45bf03d30819c0202f)" = ["agg"]
+"armory-kubectl-plugin 0.15.2 (path+file:///Users/tom/git/cymo/kp/0.16/feat-kubectl-plugin/armory-kubectl-plugin)" = ["kubectl-armory"]
 "buck2 0.1.0 (git+https://github.com/facebook/buck2.git#e427ac31dcbc5e1ede1ec9fdee20ae39eba37bed)" = ["buck2"]
 "cargo-binstall 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-binstall"]
 "cargo-bloat 0.11.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-bloat"]
 "cargo-cache 0.8.3 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-cache"]
-"cargo-edit 0.12.3 (registry+https://github.com/rust-lang/crates.io-index)" = [
+"cargo-component 0.21.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-component"]
+"cargo-download 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-download"]
+"cargo-edit 0.13.13 (registry+https://github.com/rust-lang/crates.io-index)" = [
     "cargo-add",
     "cargo-rm",
     "cargo-set-version",
@@ -15,19 +18,34 @@
 "cargo-generate 0.18.5 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-generate"]
 "cargo-insta 1.43.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-insta"]
 "cargo-leptos 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-leptos"]
+"cargo-nextest 0.9.104 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-nextest"]
+"cargo-outdated 0.17.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-outdated"]
 "cargo-watch 8.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-watch"]
 "cargo-workspaces 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = [
     "cargo-workspaces",
     "cargo-ws",
 ]
+"claude-tmux 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["claude-tmux"]
+"clio-cli 0.1.0 (path+file:///Users/tom/git/cruxy/clio/clio-cli)" = ["clio"]
 "cross 0.2.4 (git+https://github.com/cross-rs/cross#f0190b0c0fd8fc354d9b0fad61c06bf0f29be277)" = [
     "cross",
     "cross-util",
 ]
+"dioxus-cli 0.7.9 (registry+https://github.com/rust-lang/crates.io-index)" = ["dx"]
 "jj-cli 0.32.0 (git+https://github.com/jj-vcs/jj.git#1fa53c6a4f1c776b3e0c79920e9253249197276c)" = ["jj"]
+"komrade-cli 0.1.0 (path+file:///Users/tom/git/tomverelst/komrade/feat-pty-liveness/komrade-cli)" = ["komrade"]
+"lazyjj 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = ["lazyjj"]
+"licensegen 0.1.0 (git+ssh://git@github.com/kannika-io/licensing.git?tag=v0.1.0#e4deb85b5ee40b4eb7e1216486efd8b87efd5465)" = ["licensegen"]
+"mdbook 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["mdbook"]
 "sqlx-cli 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)" = [
     "cargo-sqlx",
     "sqlx",
 ]
 "tailspin 1.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = ["spin"]
 "tauri-cli 2.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = ["cargo-tauri"]
+"toe-cli 0.1.0 (path+file:///Users/tom/git/cymo/toe/toe-cli)" = ["toe"]
+"wasm-bindgen-cli 0.2.115 (registry+https://github.com/rust-lang/crates.io-index)" = [
+    "wasm-bindgen",
+    "wasm-bindgen-test-runner",
+    "wasm2es6js",
+]
