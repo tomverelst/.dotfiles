@@ -1,112 +1,319 @@
+tap "anomalyco/tap"
 tap "azure/kubelogin"
+tap "charmbracelet/tap"
 tap "homebrew/bundle"
-tap "httpx-sh/tap"
 tap "jesseduffield/lazydocker"
 tap "jesseduffield/lazygit"
+tap "jstkdng/programs"
 tap "kudobuilder/tap"
 tap "redpanda-data/tap"
 tap "restcli/restcli"
+tap "schpet/tap"
+tap "servicex-sh/tap", "https://github.com/servicex-sh/homebrew-tap.git"
+tap "slp/krunkit"
 tap "weaveworks/tap"
-brew "libtiff"
-brew "jpeg-xl"
-brew "aom"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-brew "python@3.12"
-brew "asciinema"
-brew "azure-cli"
-brew "libssh2"
-brew "bat"
-brew "bc"
-brew "bind"
-brew "glib"
-brew "cmake"
-brew "cmatrix"
-brew "coreutils"
-brew "cowsay"
-brew "crane"
-brew "difftastic"
-brew "direnv"
-brew "docker"
-brew "expect"
-brew "eza"
-brew "fd"
-brew "gnutls"
-brew "harfbuzz"
-brew "openjpeg"
-brew "libarchive"
+# C library SSHv1/SSHv2 client and server protocols
 brew "libssh"
-brew "tesseract"
-brew "ffmpeg"
-brew "figlet"
-brew "fish"
-brew "fortune"
-brew "gh"
-brew "git-cliff"
-brew "git-filter-repo"
-brew "gnupg"
-brew "go"
-brew "go-task"
-brew "helm"
-brew "hexyl"
-brew "httpie"
-brew "hugo"
-brew "influxdb-cli"
-brew "ios-deploy"
-brew "jaq"
-brew "jj"
-brew "jq"
-brew "kind"
-brew "kubernetes-cli"
-brew "kubectx"
-brew "kustomize"
-brew "lazygit"
-brew "libgit2@1.7"
-brew "librdkafka"
-brew "lolcat"
-brew "lsd"
-brew "make"
-brew "openjdk"
-brew "maven"
-brew "neovim"
-brew "nmap"
-brew "node"
-brew "parallel"
-brew "pkgconf"
-brew "pnpm"
-brew "postgresql@14"
-brew "protobuf"
-brew "python@3.10"
-brew "python@3.11"
-brew "reattach-to-user-namespace"
-brew "ripgrep"
-brew "rover"
-brew "rust-analyzer"
-brew "scrcpy"
-brew "sevenzip"
-brew "slides"
-brew "ssh-copy-id"
-brew "stern"
-brew "tcl-tk"
-brew "thefuck"
-brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
+# Record and share terminal sessions
+brew "asciinema", link: false
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# C library implementing the SSH2 protocol
+brew "libssh2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Arbitrary precision numeric processing language
+brew "bc"
+# Implementation of the DNS protocols
+brew "bind"
+# Generic-purpose lossless compression algorithm by Google
+brew "brotli"
+# Core application library for C
+brew "glib"
+# Cross-platform make
+brew "cmake"
+# Console Matrix
+brew "cmatrix"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Apjanke's fork of the classic cowsay project
+brew "cowsay"
+# Tool for interacting with remote images and registries
+brew "crane"
+# Diff that understands syntax
+brew "difftastic"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Pack, ship and run any application as a lightweight container
+brew "docker", link: false
+# Emulates the detach feature of screen
+brew "dtach"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Program that can automate interactive applications
+brew "expect"
+# Modern, maintained replacement for ls
+brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Library for manipulating fonts
+brew "fonttools"
+# Infamous electronic fortune-cookie generator
+brew "fortune"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Highly customizable changelog generator
+brew "git-cliff"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Task is a task runner/build tool that aims to be simpler and easier to use
+brew "go-task"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Kubernetes package manager
+brew "helm"
+# Command-line hex viewer
+brew "hexyl"
+# HTTP load generator, ApacheBench (ab) replacement
+brew "hey"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Fast and multi-purpose HTTP toolkit
+brew "httpx"
+# Configurable static site generator
+brew "hugo"
+# CLI for managing resources in InfluxDB v2
+brew "influxdb-cli"
+# Install and debug iPhone apps from the command-line
+brew "ios-deploy"
+# JQ clone focussed on correctness, speed, and simplicity
+brew "jaq"
+# Git-compatible distributed version control system
+brew "jj"
+# TIFF library and utilities
+brew "libtiff"
+# New file format for still image compression
+brew "jpeg-xl"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Handy way to save and run project-specific commands
+brew "just"
+# Run local Kubernetes cluster in Docker
+brew "kind"
+# Tool that can switch between kubectl contexts easily and create aliases
+brew "kubectx"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Library for JPEG-2000 image manipulation
+brew "openjpeg"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2@1.7"
+# Apache Kafka C/C++ library
+brew "librdkafka"
+# Rainbows and unicorns in your console!
+brew "lolcat"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Utility for directing compilation
+brew "make"
+# Development kit for the Java programming language
+brew "openjdk"
+# Java-based project management
+brew "maven"
+# Syntax-aware git merge driver
+brew "mergiraf"
+# Terminal-based visual file manager
+brew "midnight-commander"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Incremental parsing library
+brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Port scanning utility for large networks
+brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Drop-in replacement for Terraform. Infrastructure as Code Tool
+brew "opentofu"
+# Shell command parallelization utility
+brew "parallel"
+# Password manager
+brew "pass"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# Tool for managing OCI containers and pods
+brew "podman"
+# Object-relational database system
+brew "postgresql@14"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# CLI for managing and maintaining data graphs with Apollo Studio
+brew "rover"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
+# Display and control your Android device
+brew "scrcpy"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Terminal based presentation tool
+brew "slides"
+# Add a public key to a remote machine's authorized_keys file
+brew "ssh-copy-id"
+# Tail multiple Kubernetes pods & their containers
+brew "stern"
+# Tool Command Language
+brew "tcl-tk"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Programmatically correct mistyped console commands
+brew "thefuck"
+# Terminal multiplexer
+brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Network diagnostic tool, inspired by mtr
 brew "trippy"
+# Build, bundle & ship your Rust WASM application to the web
 brew "trunk"
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Tool for creating isolated virtual python environments
 brew "virtualenv", link: false
+# Next generation frontend tooling. It's fast!
 brew "vite"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
+# HTTP benchmarking tool
+brew "wrk"
+# JavaScript package manager
 brew "yarn"
+# Modular BSD reimplementation of NASM
+brew "yasm"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Tracks most-used directories to make cd smarter
 brew "z"
-brew "azure/kubelogin/kubelogin"
-brew "httpx-sh/tap/httpx"
-brew "jesseduffield/lazydocker/lazydocker"
-brew "kudobuilder/tap/kuttl-cli"
-brew "redpanda-data/tap/redpanda"
-brew "restcli/restcli/restcli"
-brew "weaveworks/tap/eksctl"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Interact with KUTTL via the kubectl plugin
+brew "kudobuilder/tap/kuttl-cli", link: false
+# Virtual Audio Driver
+cask "blackhole-2ch"
+cask "kuttl-cli"
+# File system integration
+cask "macfuse"
+# Open source build of Lens Kubernetes IDE
 cask "openlens"
+# Real-time strategy game engine for Westwood games
 cask "openra"
+# Menu bar customization tool
 cask "swiftbar"
+# Disk encryption software focusing on security based on TrueCrypt
+cask "veracrypt"
+# Network protocol analyzer
 cask "wireshark-chmodbpf"
+cargo "agg"
+cargo "armory-kubectl-plugin"
+cargo "buck2"
+cargo "cargo-binstall"
+cargo "cargo-bloat"
+cargo "cargo-cache"
+cargo "cargo-component"
+cargo "cargo-download"
+cargo "cargo-edit"
+cargo "cargo-example"
+cargo "cargo-expand"
+cargo "cargo-generate"
+cargo "cargo-insta"
+cargo "cargo-leptos"
+cargo "cargo-nextest"
+cargo "cargo-outdated"
+cargo "cargo-watch"
+cargo "cargo-workspaces"
+cargo "claude-tmux"
+cargo "clio-cli"
+cargo "cross"
+cargo "dioxus-cli"
+cargo "jj-cli"
+cargo "komrade-cli"
+cargo "lazyjj"
+cargo "licensegen"
+cargo "mdbook"
+cargo "sqlx-cli"
+cargo "tailspin"
+cargo "tauri-cli"
+cargo "toe-cli"
+cargo "wasm-bindgen-cli"
+uv "graphifyy"
+krew "access-matrix"
+krew "ctx"
+krew "krew"
+krew "kuttl"
+krew "ns"
+krew "stern"
+krew "tree"
+npm "@angular/cli"
+npm "@google/gemini-cli"
+npm "ctx7"
+npm "fleetctl"
+npm "graphqurl"
+npm "neovim"
+npm "next"
+npm "ng-cli"
+npm "sass"
+npm "smee-client"
+npm "tailwindcss"
+npm "webtorrent-cli"
