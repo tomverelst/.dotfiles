@@ -16,7 +16,11 @@ function ports
       case 'fkill'
           __ports_fkill
       case '*'
-          __ports_fkill
+          if string match -qr '^[0-9]+$' -- $cmd
+              __ports_fkill $cmd
+          else
+              __ports_fkill
+          end
       end
 end
 
@@ -70,7 +74,21 @@ function __ports_kill
 end
 
 function __ports_fkill
-    set -l process (__ports_list | fzf --header "Select a process to kill")
+    set -l filter $argv[1]
+
+    set -l list
+    if test -n "$filter"
+        # Match the port column (2nd field) exactly against the filter
+        set list (__ports_list | awk -v p="$filter" '$2 == p')
+        if test -z "$list"
+            echo "No listening process found on port $filter."
+            return 1
+        end
+    else
+        set list (__ports_list)
+    end
+
+    set -l process (printf '%s\n' $list | fzf --header "Select a process to kill")
 
     if test -n "$process"
         set -l pid (echo $process | string split ' ' -f1)
