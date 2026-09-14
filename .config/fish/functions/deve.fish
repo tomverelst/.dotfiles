@@ -1,38 +1,67 @@
 function deve --description "Run the kannika dev env for a PR or branch in a deve workspace on the devbox's herdr session"
-    set -l devbox tom@devbox.local.cruxy.eu
-    set -l repo /home/tom/git/kp/kannika-platform
-    # The env builds and runs here, leaving the main checkout alone
-    set -l worktree /home/tom/git/kp/deve
+    # Deployment targets are private and live in ~/.config/fish/private.fish
+    # (untracked): DEVE_DEVBOX, DEVE_REPO_PATH, DEVE_WORKTREE (the env builds
+    # and runs there, leaving the main checkout alone), DEVE_GH_REPO
+    # (owner/name on GitHub), DEVE_DOMAIN_NAME (domain the env is served on)
+    if not set -q DEVE_DEVBOX; and test -f ~/.config/fish/private.fish
+        source ~/.config/fish/private.fish
+    end
+    for v in DEVE_DEVBOX DEVE_REPO_PATH DEVE_WORKTREE DEVE_GH_REPO DEVE_DOMAIN_NAME
+        if not set -q $v
+            echo "deve: \$$v is not set; define it in ~/.config/fish/private.fish" >&2
+            return 1
+        end
+    end
+    set -l devbox $DEVE_DEVBOX
+    set -l repo $DEVE_REPO_PATH
+    set -l worktree $DEVE_WORKTREE
+    set -l gh_repo $DEVE_GH_REPO
     set -l workspace_label deve
-    # Domain the dev env is served on, passed to the Taskfile
+    # Taskfile variable carrying the domain
     set -l domain_var DEVE_DOMAIN
-    set -l domain deve.local.cruxy.eu
+    set -l domain $DEVE_DOMAIN_NAME
 
-    set -l usage "usage: deve [-s <scenario>] [--set <key>=<value>]... <pr-number | branch>"
+    set -l usage "usage: deve [-s <scenario>] [--set <key>=<value>]... [<pr-number | branch>]
+defaults to the current branch of the local git repo"
     argparse 's/scenario=' 'set=+' 'h/help' -- $argv
     or return 2
     if set -ql _flag_help
         echo $usage
         return 0
     end
-    if test (count $argv) -ne 1
+    if test (count $argv) -gt 1
         echo $usage >&2
         return 2
     end
 
-    # A number means a PR on cymo-eu/kannika-platform, anything else is a branch
+    # No target given: use the branch checked out here, if it's pushed
+    set -l target $argv[1]
+    if test -z "$target"
+        set target (git rev-parse --abbrev-ref HEAD 2>/dev/null)
+        if test -z "$target"; or test "$target" = HEAD
+            echo "deve: not on a git branch here; give a PR number or branch" >&2
+            echo $usage >&2
+            return 2
+        end
+        if not git ls-remote --exit-code --heads origin $target >/dev/null 2>&1
+            echo "deve: branch '$target' is not pushed to origin" >&2
+            return 1
+        end
+    end
+
+    # A number means a PR on $DEVE_GH_REPO, anything else is a branch
     # name. PRs fetch by pull/<n>/head, which outlives the head branch, so a
     # merged PR still runs; the branch name is only for display.
-    set -l branch $argv[1]
+    set -l branch $target
     set -l src refs/heads/$branch
     # The ref scenarios are validated against: the head sha for PRs because a
     # merged PR's branch may be gone
     set -l tree_ref $branch
-    if string match -qr '^[0-9]+$' -- $argv[1]
-        set src pull/$argv[1]/head
-        set -l head (gh pr view $argv[1] -R cymo-eu/kannika-platform --json headRefName,headRefOid --jq '.headRefName, .headRefOid')
+    if string match -qr '^[0-9]+$' -- $target
+        set src pull/$target/head
+        set -l head (gh pr view $target -R $gh_repo --json headRefName,headRefOid --jq '.headRefName, .headRefOid')
         if test (count $head) -ne 2
-            echo "deve: cannot resolve PR #$argv[1] on cymo-eu/kannika-platform" >&2
+            echo "deve: cannot resolve PR #$target on $gh_repo" >&2
             return 1
         end
         set branch $head[1]
@@ -42,9 +71,9 @@ function deve --description "Run the kannika dev env for a PR or branch in a dev
     # Scenarios live in the deployed ref's tree, so validate there before
     # touching the devbox
     if set -ql _flag_scenario
-        if not gh api "repos/cymo-eu/kannika-platform/contents/dev/scenarios/$_flag_scenario/values.yaml?ref=$tree_ref" >/dev/null 2>&1
+        if not gh api "repos/$gh_repo/contents/dev/scenarios/$_flag_scenario/values.yaml?ref=$tree_ref" >/dev/null 2>&1
             echo "deve: unknown scenario '$_flag_scenario' on $branch; available:" >&2
-            gh api "repos/cymo-eu/kannika-platform/contents/dev/scenarios?ref=$tree_ref" --jq '.[].name' 2>/dev/null | sed 's/^/  /' >&2
+            gh api "repos/$gh_repo/contents/dev/scenarios?ref=$tree_ref" --jq '.[].name' 2>/dev/null | sed 's/^/  /' >&2
             return 1
         end
     end
