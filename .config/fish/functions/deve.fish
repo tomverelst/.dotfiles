@@ -13,15 +13,17 @@ function deve --description "Run the kannika dev env for a PR or branch in a dev
         return 2
     end
 
-    # A number means a PR on cymo-eu/kannika-platform, anything else is a branch name
+    # A number means a PR on cymo-eu/kannika-platform, anything else is a branch
+    # name. PRs fetch by pull/<n>/head, which outlives the head branch, so a
+    # merged PR still runs; the branch name is only for display.
     set -l branch $argv[1]
-    set -l banner "Testing $branch"
-    if string match -qr '^[0-9]+$' -- $branch
-        if not set branch (gh pr view $branch -R cymo-eu/kannika-platform --json headRefName -q .headRefName)
+    set -l src refs/heads/$branch
+    if string match -qr '^[0-9]+$' -- $argv[1]
+        set src pull/$argv[1]/head
+        if not set branch (gh pr view $argv[1] -R cymo-eu/kannika-platform --json headRefName -q .headRefName)
             echo "deve: cannot resolve PR #$argv[1] on cymo-eu/kannika-platform" >&2
             return 1
         end
-        set banner "Testing PR #$argv[1] ($branch)"
     end
 
     if not ssh -o ConnectTimeout=10 $devbox true
@@ -57,8 +59,9 @@ function deve --description "Run the kannika dev env for a PR or branch in a dev
     end
 
     # Interrupt whatever ran before so the last invocation wins, then inject
-    # The pane runs fish: add the worktree on first use, retarget it after
-    set -l spinup "cd $repo; and git fetch origin $branch; and begin; git worktree add --detach $worktree origin/$branch 2>/dev/null; or git -C $worktree switch --detach origin/$branch; end; and cd $worktree; and task env:fast-builds; and task dev:up $domain_var=$domain DEVE_HTTP_PORT=80 DEVE_BANNER=\"$banner\""
+    # The pane runs fish: fetch into a fixed ref all worktrees share, add the
+    # worktree on first use, retarget it after
+    set -l spinup "cd $repo; and git fetch origin +$src:refs/deve/head; and begin; git worktree add --detach $worktree refs/deve/head 2>/dev/null; or git -C $worktree switch --detach refs/deve/head; end; and cd $worktree; and task env:fast-builds; and task dev:up $domain_var=$domain DEVE_HTTP_PORT=80"
     ssh $devbox "herdr pane send-keys $pane ctrl+c; sleep 1; herdr pane run $pane '$spinup'"
     or return 1
 
