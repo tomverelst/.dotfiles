@@ -49,4 +49,7 @@ if ! tmux has-session -t="$name" 2>/dev/null; then
     tmux new-session -ds "$name" -c "$selected"
 fi
 
+# Mirror the session into Herdr so it shows up in the Herdr window too.
+~/.config/tmux/scripts/herdr-mirror.sh "$name" "$selected"
+
 tmux switch-client -t "$name"
