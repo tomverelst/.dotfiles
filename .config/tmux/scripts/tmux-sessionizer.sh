@@ -39,6 +39,11 @@ if [[ -z $selected ]]; then
 fi
 
 name=$(basename "$selected" | tr . _)
+# Generic repo names like "main" collide across projects (e.g. kp/0.18/main
+# vs kp/0.19/main), so include more of the path to keep sessions distinct.
+if [[ $name == main || $name == master ]]; then
+    name=$(echo "$selected" | rev | cut -d/ -f1-3 | rev | tr ./ __)
+fi
 
 if ! tmux has-session -t="$name" 2>/dev/null; then
     tmux new-session -ds "$name" -c "$selected"
